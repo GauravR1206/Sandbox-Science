@@ -11,12 +11,6 @@ In this hands-on workshop, you'll:
 - Visualize latent space representations and model reconstructions
 - Understand the power of prototyping with small datasets
 
-## 🚀 Quick Start
-
-### Prerequisites
-- Python 3.12+
-- Familiarity with Jupyter notebooks
-
 ### Installation
 
 1. **Clone this repository:**
