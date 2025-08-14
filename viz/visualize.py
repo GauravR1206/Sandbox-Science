@@ -1,10 +1,11 @@
 import numpy as np
 import torch
-from latent_traversals import LatentTraverser
+from .latent_traversals import LatentTraverser
 from scipy import stats
 from torch.autograd import Variable
 from torchvision.utils import make_grid, save_image
 
+import matplotlib.pyplot as plt  # Added for plotting
 
 class Visualizer():
     def __init__(self, model):
@@ -135,7 +136,7 @@ class Visualizer():
         else:
             return make_grid(generated.data, nrow=size[1])
 
-    def all_latent_traversals(self, size=8, filename='all_traversals.png'):
+    def all_latent_traversals(self, size=8, filename=None):
         """
         Traverses all latent dimensions one by one and plots a grid of images
         where each row corresponds to a latent traversal of one latent
@@ -145,6 +146,8 @@ class Visualizer():
         ----------
         size : int
             Number of samples for each latent traversal.
+        filename : str or None
+            If not None, saves the image to this filename. If None, returns the grid tensor.
         """
         latent_samples = []
 
@@ -162,10 +165,8 @@ class Visualizer():
         # Decode samples
         generated = self._decode_latents(torch.cat(latent_samples, dim=0))
 
-        if self.save_images:
-            save_image(generated.data, filename, nrow=size)
-        else:
-            return make_grid(generated.data, nrow=size)
+        # Always return the grid tensor, do not save image
+        return make_grid(generated.data, nrow=size)
 
     def _decode_latents(self, latent_samples):
         """
