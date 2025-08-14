@@ -15,7 +15,7 @@ In this hands-on workshop, you'll:
 
 1. **Clone this repository:**
    ```bash
-   git clone <repository-url>
+   git clone git@github.com:GauravR1206/Sandbox-Science.git
    cd Sandbox-Science
    ```
 
